@@ -1,5 +1,6 @@
 #include <stdio.h> 
 #include <stdlib.h> 
+#include <ctime>
 
 void print_array(int A[], int size) 
 { 
@@ -61,15 +62,23 @@ void mergeSort(int arr[], int l, int r)
 
 int main() 
 { 
-    int *arr; 
-    int len = 1000000;
-    arr = new int[len];
+    //int arr[] = {7,3,1,10,6,5,4,9};
+    int *arr;
+    int len[] = {100000,200000,500000,700000,800000,1000000};
+    FILE *f = fopen("tiempos.txt", "w");
+    clock_t t0,t1;
 
-    for(int i=0; i<len; i++) {
-        arr[i] = rand();
+    srand(time(NULL));
+    for (int i=0; i<6; i++){
+        arr = new int[len[i]];
+        for(int j=0; j<len[i]; j++){
+            scanf("%d", &arr[j]);
+        }
+        t0 = clock();
+        mergesort(arr, 0, len[i]-1);
+        t1 = clock();
+        //print_array(arr, 100);
+        double time = (double)(t1-t0)/CLOCKS_PER_SEC;
+        fprintf(f,"%d , %f\n", len[i], time);
     }
-
-    mergeSort(arr, 0, len-1); 
-    print_array(arr, 100); 
-    return 0; 
 } 
