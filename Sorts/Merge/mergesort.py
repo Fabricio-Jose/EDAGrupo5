@@ -1,11 +1,12 @@
-from random import randint, uniform,random
+from time import time
+from io import open
 
 def mergeSort(arr): 
-    if len(arr) >1: 
+    if len(arr) > 1: 
         mid = len(arr)//2
         L = arr[:mid]
         R = arr[mid:]
-  
+
         mergeSort(L)
         mergeSort(R)
   
@@ -31,17 +32,30 @@ def mergeSort(arr):
             k+= 1
   
 def printList(arr): 
-    for i in range(len(arr)):         
+    for i in range(10):         
         print(arr[i], end =" ") 
     print() 
   
 if __name__ == '__main__': 
     #n=int(input())
-    n=1000000
-    A=list(range(n))
-    for i in range(n):
-        A[i]=int(random()*n+1)
-    mergeSort(A) 
-    for i in range(n): 
-        print(A[i]), 
+    tams = [100000,200000,500000,700000,800000,1000000]
+    times = [0,0,0,0,0,0]
+    f=open("Mergepy.txt","w")
+    
+    for j in range(6):
+        archivo=open("entrada.txt","r")
+        lista=archivo.readlines()
+        archivo.close()
+        n=tams[j]
+        A = [0 for k in range(n)]
+        for i in range(n):
+            A[i]=int(lista[i])
+        t0=time()
+        mergeSort(A)
+        tiempo =time()-t0
+        tiempo=round(tiempo,3)
+        print(tiempo)
+        lista.clear()
+        #printList(A)
+        f.write(str(tams[j])+" , "+str(tiempo)+"\n")
   
