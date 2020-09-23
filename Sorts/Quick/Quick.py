@@ -1,3 +1,7 @@
+from io import open
+from time import time
+#import math
+
 def particion(A,p,r): 
     i=(p-1) 
     x=A[r]
@@ -14,11 +18,21 @@ def quicksort(A,p,r):
         quicksort(A,p,q-1)
         quicksort(A,q+1,r)
 
-#n=int(input())
-n=1000000
-A=range(n)
-for i in range(n):
-    A[i]=int(input())
-quicksort(A,0,n-1) 
-for i in range(n): 
-    print(A[i]), 
+tams = [100000,200000,500000,700000,800000,1000000]
+times = [0,0,0,0,0,0]
+f=open("QuickPy.txt","w")
+
+for j in range(6):            
+    archivo=open("entrada.txt","r")
+    lista=archivo.readlines()
+    archivo.close()
+    n=tams[j];
+    for i in range(n):
+        lista[i]=int(lista[i])
+    t0=time()
+    quicksort(lista,0,n-1) 
+    tiempo =time()-t0
+    tiempo=round(tiempo,3)
+    print(tiempo)
+    lista.clear()
+    f.write(str(tams[j])+" , "+str(tiempo)+"\n")
