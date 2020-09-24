@@ -40,7 +40,7 @@ if __name__ == '__main__':
     #n=int(input())
     tams = [100000,200000,500000,700000,800000,1000000]
     times = [0,0,0,0,0,0]
-    f=open("Mergepy.txt","w")
+    f=open("mergepy.txt","w")
     
     for j in range(6):
         archivo=open("entrada.txt","r")
@@ -54,7 +54,6 @@ if __name__ == '__main__':
         mergeSort(A)
         tiempo =time()-t0
         tiempo=round(tiempo,3)
-        print(tiempo)
         lista.clear()
         #printList(A)
         f.write(str(tams[j])+" , "+str(tiempo)+"\n")

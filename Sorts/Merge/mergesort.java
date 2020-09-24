@@ -66,8 +66,8 @@ public class mergesort {
         tams[0] =100000;
         tams[1] =200000;
         tams[2] =500000;
-        tams[3] =600000;
-        tams[4] =700000;
+        tams[3] =700000;
+        tams[4] =800000;
         tams[5] =1000000;
 
         double times[];
@@ -126,7 +126,7 @@ class Leer_fichero{
                 }
             }
         }catch (IOException e){
-            System.out.println("No hay arch");
+            System.out.println("Archivo no encontrado");
         }finally{
             try{
                 ento.close();
@@ -142,14 +142,14 @@ class Leer_fichero{
 class Escribir{
     public void escr(int tams [], double times[]){
         try {
-            FileWriter escritura=new FileWriter("MergeJava.txt");
+            FileWriter escritura=new FileWriter("mergejava.txt");
             String tipeo;
             String tam_1;
             for(int i=0;i<6;i++){
                 tipeo=times[i]+"";
                 tam_1=tams[i]+"";
 
-                escritura.write(tams[i]+" su demora es: "+tipeo+"\n");
+                escritura.write(tams[i]+" , "+tipeo+"\n");
             }
             escritura.close();
         }catch (IOException e){
