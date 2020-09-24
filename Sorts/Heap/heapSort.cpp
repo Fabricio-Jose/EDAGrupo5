@@ -1,13 +1,14 @@
-#include <iostream> 
-using namespace std; 
-  
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctime>
 
-void heapify(int arr[], int n, int i) 
-{ 
-    int largest = i; // Initialize largest as root 
-    int l = 2 * i + 1; // left = 2*i + 1 
-    int r = 2 * i + 2; // right = 2*i + 2 
-  
+using namespace std; 
+
+void heapify(int arr[], int n, int i){ 
+    int largest = i;
+    int l = 2 * i + 1;
+    int r = 2 * i + 2;
  
     if (l < n && arr[l] > arr[largest]) 
         largest = l; 
@@ -15,41 +16,48 @@ void heapify(int arr[], int n, int i)
     if (r < n && arr[r] > arr[largest]) 
         largest = r; 
   
-    
     if (largest != i) { 
         swap(arr[i], arr[largest]); 
-  
-        
         heapify(arr, n, largest); 
     } 
 } 
   
 
-void heapSort(int arr[], int n) 
-{ 
-  
+void heapSort(int arr[], int n){
     for (int i = n / 2 - 1; i >= 0; i--) 
         heapify(arr, n, i); 
   
-    
     for (int i = n - 1; i >= 0; i--) { 
-        // Move current root to end 
         swap(arr[0], arr[i]); 
-  
         heapify(arr, i, 0); 
     } 
 } 
-  
 
+void printArray(int arr[], int n) 
+{ 
+    for (int i=0; i<n; ++i) 
+        cout << arr[i] << " "; 
+    cout << "\n"; 
+} 
   
-// Driver program 
 int main() 
 { 
-    int arr[] = { 12, 11, 13, 5, 6, 7 }; 
-    int n = sizeof(arr) / sizeof(arr[0]); 
-  
-    heapSort(arr, n); 
-  
-    cout << "Sorted array is \n"; 
+    int *arr;
+    int len[] = {100000,200000,500000,700000,800000,1000000};
+    FILE *f = fopen("heapcpp.txt", "w");
+    clock_t t0,t1;
+
+    for (int i=0; i<6; i++){
+        arr = new int[len[i]];
+        for(int j=0; j<len[i]; j++){
+            scanf("%d", &arr[j]);
+        }
+        t0 = clock();
+        heapSort(arr, len[i]);
+        t1 = clock();
+        //printArray(arr, 50);
+        double time = (double)(t1-t0)/CLOCKS_PER_SEC;
+        fprintf(f,"%d , %f\n", len[i], time);
+    }
    
 }
