@@ -6,7 +6,7 @@ def burbuja(A,n):
 			if(A[j]>A[j+1]):
 				A[j],A[j+1]=A[j+1],A[j]
 
-pruebas=[10000,20000,30000,40000,50000]
+pruebas=[10000, 15000, 20000, 25000, 30000,35000]
 
 for x in pruebas:
 	f = open("entrada.txt", "r")
@@ -18,4 +18,9 @@ for x in pruebas:
 	burbuja(A,x)
 	elapsed_time = time() - start_time
 
-	print(x," ",elapsed_time)
+	res=str(x)+" , "+str(elapsed_time)+"\n"
+	print(res)
+	sal = open("bubblepy.txt", "a+")
+	sal.write(res)
+	sal.close()
+	f.close()

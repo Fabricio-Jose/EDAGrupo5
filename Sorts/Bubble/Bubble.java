@@ -7,7 +7,7 @@ public class Bubble
 	
     public static void main(String args[]) 
     {   
-    	int pruebas[]={10000,20000};
+    	int pruebas[]={10000, 15000, 20000, 25000, 30000,35000};
     	for (int i = 0; i < pruebas.length; i++)
     	{
     		//Leer_fichero entrada=new Leer_fichero();
@@ -16,7 +16,6 @@ public class Bubble
     		Prueba test=new Prueba(pruebas[i]);
     		//contador
     		test.ejecutar(pruebas[i]);
-    		System.out.println("continuamoooos");
     		//contador
 
     	}
@@ -72,7 +71,7 @@ class Prueba
 
         fin = System.currentTimeMillis();
         tiempo = (fin - inicio)/1000;
-        escribir(String.valueOf(n)+" "+String.valueOf(tiempo));
+        escribir(String.valueOf(n)+" , "+String.valueOf(tiempo));
         return tiempo;
 
 	}
@@ -81,7 +80,7 @@ class Prueba
         //frase="algo";
         try 
         {
-            FileWriter escritura=new FileWriter("salida.txt",true);
+            FileWriter escritura=new FileWriter("bubblejava.txt",true);
             for(int i=0;i<frase.length();i++)
             {
             	escritura.write(frase.charAt(i));

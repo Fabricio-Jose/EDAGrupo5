@@ -34,11 +34,11 @@ void burbuja(int *A,int n)
 }
 int main()
 {
-	int pruebas[]={10000,20000,30000,40000,50000};//colocar aqui los tamaños
+	int pruebas[]={10000, 15000, 20000, 25000, 30000,35000};//colocar aqui los tamaños
 	double t0,t1,time;
 	for(auto x:pruebas)
 	{
-		std::cout<<x<<" ";
+		std::cout<<x<<" , ";
 		int *a=new int[x];
 		std::ifstream entrada("entrada.txt",std::ifstream::in);
 		for (int i=0;i<x;++i)
