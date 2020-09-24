@@ -1,27 +1,47 @@
+from io import open
+from time import time
+#import math
 
-def countingSort(array):
-    size = len(array)
-    output = [0] * size
+def getMax(A,size): 
+    maxi = A[1];
+    for i in range(size):
+        if A[i]>maxi:
+            maxi=A[i]
+    return maxi
 
-    count = [0] * 10
+def CountSort(A,size): 
+    output=[0]*(size+1)
+    maxi=getMax(A,size)
+    
+    count=[0]*(maxi+1)
+#    for i in range(maxi+1):
+#        count[i]=0
+    for i in range(1,size):
+        count[int(A[i])] +=1
+    for i in range(1,maxi+1):
+        count[i]+=count[i-1]
+    for i in range(size-1,0):
+        output[count[int(A[i])]]=A[i]
+        count[int(A[i])]-=1
+    for i in range(0,size):
+        A[i]=output[i]
+    
 
-    for i in range(0, size):
-        count[array[i]] += 1
+tams = [100000,200000,500000,700000,800000,1000000]
+times = [0,0,0,0,0,0]
+f=open("CountPy.txt","w")
 
-    for i in range(1, 10):
-        count[i] += count[i - 1]
-
-    i = size - 1
-    while i >= 0:
-        output[count[array[i]] - 1] = array[i]
-        count[array[i]] -= 1
-        i -= 1
-
-    for i in range(0, size):
-        array[i] = output[i]
-
-
-data = [4, 2, 2, 8, 3, 3, 1]
-countingSort(data)
-print("Sorted Array in Ascending Order: ")
-print(data)
+for j in range(6):            
+    archivo=open("entrada.txt","r")
+    lista=archivo.readlines()
+    archivo.close()
+    n=tams[j];
+    for i in range(n):
+        lista[i]=int(lista[i])
+    t0=time()
+    CountSort(lista,n)     
+    tiempo =time()-t0
+    tiempo=round(tiempo,3)
+    print(tiempo)
+    lista.clear()
+    f.write(str(tams[j])+" , "+str(tiempo)+"\n")
