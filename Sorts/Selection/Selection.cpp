@@ -1,15 +1,19 @@
 #include <iostream>
-#include <iostream>
-#include <sstream> 
 #include <fstream>
-#include <ctime> 
-#include <string> 
-
-using namespace std;
+#include <time.h>
 
 
-unsigned t0, t1;
-ofstream fs("SelectionCpp.txt");
+double promedio(double *b,int n)
+{
+	double prom=b[0];
+	for(int i=1;i<n;++i)
+	{
+		prom=prom+b[i];
+	}
+	return (prom/n);
+}
+
+
 
 void swap(int *xp, int *yp)  
 {  
@@ -29,37 +33,42 @@ void selectionSort(int *arr, int n)
   
         swap(&arr[min_idx], &arr[i]);  
     }  
-}  
+}
+int main()
+{
+	std::ofstream salida("selectioncpp.txt");
+	int pruebas[]={10000, 15000, 20000, 25000, 30000,35000};//colocar aqui los tamaños
+	double t0,t1,time;
+	int veces=5;
+	double *b=new double[veces];
+	for(auto x:pruebas)
+	{
+		salida<<x<<" , ";
+		int *a=new int[x];
+		std::ifstream entrada("../entrada5M.txt",std::ifstream::in);
+		for(int v=0;v<veces;v++)
+		{
+			for (int i=0;i<x;++i)
+			{
+				entrada>>a[i];
+			}
 
-int main(){
-	int tam [6] = {20000, 30000, 50000, 70000,80000,100000}; // los tamaños que probaremos
-    double *b = new double[6]; // 6 pruebas para diferentes tamaños
-    for(int j=0;j<6;j++){
-        int *a = new int[tam[j]];
-        ifstream archivo;
-        string num;
-        int num_int=0;
-        
-        archivo.open("entrada.txt",ios::in);
-        int i=0;
-        while(!archivo.eof() && i<=tam[j]){
-            getline(archivo,num);
-            stringstream convert(num);
-            
-            convert>>num_int;
-            a[i]=num_int;
-            i++;
-        }
-        archivo.close();
-        t0=clock();
-    selectionSort(a,tam[j]);
-        t1 = clock();
-        double time = (double(t1-t0)/CLOCKS_PER_SEC);
-        //cout << "Execution Time: " << time << endl;
-        fs<< tam[j]<< " , " <<time<<endl;
-        delete[] a;
-    }
+			t0=clock();//Inicio del cronometro
+			selectionSort(a,x);
+			t1=clock();//FIn de cronometro
+			time = (double(t1-t0)/CLOCKS_PER_SEC);
+			b[v]=time;
+			
+		}
+		salida <<promedio(b,veces)<< std::endl;
 
+		delete [] a;
+		entrada.close();
+	}
+	delete [] b;
+	salida.close();
 	return 0;
+}
 
-} 
+
+  

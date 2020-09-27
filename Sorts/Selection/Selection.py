@@ -10,24 +10,35 @@ def Selection(A,tam):
                 menor=j 
         A[i],A[menor]=A[menor],A[i]
 
-tams = [10000, 15000, 20000, 25000, 30000,35000]
-#tams = [4,4,4,4,4,4]
-times = [0,0,0,0,0,0]
-f=open("SelectionPy.txt","w")
+def promedio(b,n):
+	prom=b[0]
+	for i in range(1,n):
+		prom=prom+b[i]
+	return (prom/n)
 
-for j in range(6):            
-    archivo=open("entrada.txt","r")
-    lista=archivo.readlines()
-    archivo.close()
-    n=tams[j];
-    for i in range(n):
-        lista[i]=int(lista[i])
-    t0=time()
-    Selection(lista,tams[j]) 
-    tiempo =time()-t0
-    tiempo=round(tiempo,3)
-    print(tiempo)
-    lista.clear()
-    f.write(str(tams[j])+" , "+str(tiempo)+"\n")
 
- 
+pruebas=[10000, 15000, 20000, 25000, 30000,35000]
+veces=5
+
+for x in pruebas:
+	f = open("../entrada5M.txt", "r")
+	b=[0]*veces
+	for v in range(veces):
+		A=[0]*x
+		for i in range(x):
+			A[i]=int(f.readline())
+	
+		inicioCrono = time()
+		Selection(A,x)
+		finCrono = time() - inicioCrono
+		b[v]=finCrono
+	resul=promedio(b,veces)
+	res=str(x)+" , "+str(resul)+"\n"
+	print(res)
+	sal = open("selectionpy.txt", "a+")
+	sal.write(res)
+	sal.close()
+	f.close()
+
+
+

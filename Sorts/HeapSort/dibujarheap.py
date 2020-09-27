@@ -3,9 +3,9 @@ import numpy as np
 #import cv2
 from matplotlib import pyplot as plt
 
-x,y = np.loadtxt('heapcpp.txt' , delimiter=',' , unpack=True)
-x1,y1 = np.loadtxt('heappy.txt' , delimiter=',' , unpack=True)
-x2,y2 = np.loadtxt('heapjava.txt' , delimiter=',' , unpack=True)
+x,y = np.loadtxt('heapcppM.txt' , delimiter=',' , unpack=True)
+x1,y1 = np.loadtxt('heappyM.txt' , delimiter=',' , unpack=True)
+x2,y2 = np.loadtxt('heapjavaM.txt' , delimiter=',' , unpack=True)
 
 
 plt.plot(x,y,color="blue",label="Heap Sort C++")

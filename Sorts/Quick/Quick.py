@@ -18,21 +18,32 @@ def quicksort(A,p,r):
         quicksort(A,p,q-1)
         quicksort(A,q+1,r)
 
-tams = [100000,200000,500000,700000,800000,1000000]
-times = [0,0,0,0,0,0]
-f=open("QuickPy.txt","w")
+def promedio(b,n):
+	prom=b[0]
+	for i in range(1,n):
+		prom=prom+b[i]
+	return (prom/n)
 
-for j in range(6):            
-    archivo=open("entrada.txt","r")
-    lista=archivo.readlines()
-    archivo.close()
-    n=tams[j];
-    for i in range(n):
-        lista[i]=int(lista[i])
-    t0=time()
-    quicksort(lista,0,n-1) 
-    tiempo =time()-t0
-    tiempo=round(tiempo,3)
-    print(tiempo)
-    lista.clear()
-    f.write(str(tams[j])+" , "+str(tiempo)+"\n")
+
+pruebas=[100000, 300000, 500000, 700000,900000,1000000]
+veces=5
+
+for x in pruebas:
+	f = open("../entrada5M.txt", "r")
+	b=[0]*veces
+	for v in range(veces):
+		A=[0]*x
+		for i in range(x):
+			A[i]=int(f.readline())
+	
+		inicioCrono = time()
+		quicksort(A,0,x-1)
+		finCrono = time() - inicioCrono
+		b[v]=finCrono
+	resul=promedio(b,veces)
+	res=str(x)+" , "+str(resul)+"\n"
+	print(res)
+	sal = open("quickpyM.txt", "a+")
+	sal.write(res)
+	sal.close()
+	f.close()

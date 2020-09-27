@@ -2,7 +2,41 @@ import java.util.Scanner;
 import java.io.*;
 
 
-class Quick{ 
+public class Quick
+{ 
+	
+    public static void main(String args[]) 
+    {   
+		int pruebas[]={100000, 300000, 500000, 700000,900000,1000000};
+		int veces=5;
+    	for (int i = 0; i < pruebas.length; i++)
+    	{
+
+    		//Leer_fichero entrada=new Leer_fichero();
+    		//int A[]=new int[pruebas[i]];
+			
+    		Prueba test=new Prueba(pruebas[i],veces);
+    		//contador
+    		test.ejecutar(pruebas[i]);
+    		//contador
+
+    	}
+
+ 
+        
+    }
+}
+
+class Prueba
+{
+	private int A[];
+	private FileReader ento;
+	int veces;
+
+	public Prueba(int n,int v)
+	{
+		veces=v;
+	}
 	int particion(int A[], int p, int r){ 
 		int x = A[r]; 
 		int i = (p-1); 
@@ -27,102 +61,104 @@ class Quick{
 			quickk(A, q+1, r); 
 		} 
 	} 
-	static void printArray(int A[],int t){ 
-	
-		int n = t; 
-		for (int i=0; i<n; ++i) 
-			System.out.print(A[i]+" "); 
-		System.out.println(); 
-	} 
-	public static void main(String args[]){   
-        Leer_fichero acc = new Leer_fichero();
-        Escribir out= new Escribir();
-        double a;
-        int tams[];
-        tams = new int[6];
-        tams[0] =100000;
-        tams[1] =200000;
-        tams[2] =500000;
-        tams[3] =600000;
-        tams[4] =700000;
-        tams[5] =1000000;
 
-        double times[];
-        times = new double[6];
-        
-        for(int i=0;i<6;i++){
-            a=acc.lee(tams[i]);
-            times[i]=a;
-        }
-     
-        out.escr(tams,times);
-    }
-} 
 
-class Leer_fichero{
-    public double lee(int n){
-        double t_1=1.1;
-        try{
-            ento = new FileReader("entrada.txt");
-            BufferedReader mibuffer = new BufferedReader(ento);
+	void mostrar(int A[],int n)
+	{
+		for(int i=0;i<n;i++)
+		{
+			System.out.print(A[i]+" ");
+		}
+		System.out.println();
+	}
+
+	public double promedio(double b[], int n)
+	{
+		double prom=b[0];
+		for(int i=1;i<n;i++)
+		{
+			prom=prom+b[i];
+		}
+		return (prom/n);
+	}
+
+	public void ejecutar(int n)
+	{
+		
+		try{
+			double tiempo;
+			double inicio;
+			double fin;
+			double b[];
+			b=new double[veces];
+			for(int v=0;v<veces;v++)
+			{
+				
+				ento = new FileReader("../entrada5M.txt");
+				BufferedReader mibuffer = new BufferedReader(ento);
+
+				String linea="";
+				int entero;
+
+				int A[];
+				A=new int[n];
+				
+				for (int i=0;i<n;i++)
+				{
+					linea=mibuffer.readLine();
+					if(linea!=null)
+					{
+						linea=linea.substring(0,linea.length()-1);
+						entero = Integer.parseInt(linea);
+						A[i]=Integer.parseInt(linea);
+					}  
+				}
+				inicio = System.currentTimeMillis();
+
+				quickk(A,0, n-1); 
+
+				fin = System.currentTimeMillis();
+				tiempo = (fin - inicio)/1000;
+				b[v]=tiempo;
+
+
+			}
+			
+			
+			escribir(String.valueOf(n)+" , "+String.valueOf(promedio(b,veces)));
             
-            String linea="";
-          	double TInicio, TFin;//, t_1;
-
-            int A[];
-            A=new int[n];
-            
-            int entero,i;
-            i=0;
-            while(linea!=null){
-                
-                linea=mibuffer.readLine();
                       
-                if(linea!=null){
-                    linea=linea.substring(0,linea.length()-1);
-                    entero = Integer.parseInt(linea);
-                    
-                    A[i]=entero;
-                    i=i+1;
-                    if(i==n){
-                        Quick ob = new Quick(); 
-                        TInicio = System.currentTimeMillis();
-                        ob.quickk(A, 0, n-1); 
-                        TFin = System.currentTimeMillis();
-                        t_1 = (TFin - TInicio)/1000;
-                        break;
-                    }                
-                }
-            }           
         }catch (IOException e){
             System.out.println("No hay arch");
         }finally{
+        
             try{
                 ento.close();
             }catch (IOException e) {
                 e.printStackTrace();
             }
         }
-    return t_1;
-    }    
-    FileReader ento;
-}
 
-class Escribir{
-    public void escr(int tams [], double times[]){   
-        try {
-            FileWriter escritura=new FileWriter("QuickJava.txt");
-            String tipeo;
-            String tam_1;
-            for(int i=0;i<6;i++){
-                tipeo=times[i]+"";
-                tam_1=tams[i]+"";
-                
-                escritura.write(tams[i]+" , "+tipeo+"\n");
-            }
+	}
+	public void escribir(String frase)
+    {
+        //frase="algo";
+        try 
+        {
+            FileWriter escritura=new FileWriter("quickjavaM.txt",true);
+            for(int i=0;i<frase.length();i++)
+            {
+            	escritura.write(frase.charAt(i));
+        	}
+        	escritura.write("\n");
             escritura.close(); 
-        }catch (IOException e){
+        }catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
+
+
 }
+
+

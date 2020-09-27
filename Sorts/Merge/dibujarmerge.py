@@ -3,9 +3,9 @@ import numpy as np
 #import cv2
 from matplotlib import pyplot as plt
 
-x,y = np.loadtxt('mergecpp.txt' , delimiter=',' , unpack=True)
-x1,y1 = np.loadtxt('mergepy.txt' , delimiter=',' , unpack=True)
-x2,y2 = np.loadtxt('mergejava.txt' , delimiter=',' , unpack=True)
+x,y = np.loadtxt('mergecppM.txt' , delimiter=',' , unpack=True)
+x1,y1 = np.loadtxt('mergepyM.txt' , delimiter=',' , unpack=True)
+x2,y2 = np.loadtxt('mergejavaM.txt' , delimiter=',' , unpack=True)
 
 
 plt.plot(x,y,color="blue",label="Merge Sort C++")

@@ -6,11 +6,11 @@ from matplotlib import pyplot as plt
 
 # x,y ,s,d = np.loadtxt('entrada.csv' , delimiter=',' , unpack=True)
 #x,y = np.loadtxt('bubblepy.txt' , delimiter=',' , unpack=True)
-x1,y1 = np.loadtxt('CountinPy.txt' , delimiter=',' , unpack=True)
-x2,y2 = np.loadtxt('heappy.txt' , delimiter=',' , unpack=True)
+x1,y1 = np.loadtxt('countingpyM.txt' , delimiter=',' , unpack=True)
+x2,y2 = np.loadtxt('heappyM.txt' , delimiter=',' , unpack=True)
 #x3,y3 = np.loadtxt('insertpy.txt' , delimiter=',' , unpack=True)
-x4,y4 = np.loadtxt('mergepy.txt' , delimiter=',' , unpack=True)
-x5,y5 = np.loadtxt('QuickPy.txt' , delimiter=',' , unpack=True)
+x4,y4 = np.loadtxt('mergepyM.txt' , delimiter=',' , unpack=True)
+x5,y5 = np.loadtxt('quickpyM.txt' , delimiter=',' , unpack=True)
 #x6,y6 = np.loadtxt('SelectionPy.txt' , delimiter=',' , unpack=True)
 
 

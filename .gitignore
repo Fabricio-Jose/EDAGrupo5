@@ -485,4 +485,4 @@ dmypy.json
 
 # End of https://www.toptal.com/developers/gitignore/api/c++,java,latex,python
 
-*.txt
+#*.txt

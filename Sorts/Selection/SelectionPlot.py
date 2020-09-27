@@ -3,9 +3,9 @@ import numpy as np
 #import cv2
 from matplotlib import pyplot as plt
 
-x,y = np.loadtxt('SelectionCpp.txt' , delimiter=',' , unpack=True)
-x1,y1 = np.loadtxt('SelectionPy.txt' , delimiter=',' , unpack=True)
-x2,y2 = np.loadtxt('SelectionJava.txt' , delimiter=',' , unpack=True)
+x,y = np.loadtxt('selectioncpp.txt' , delimiter=',' , unpack=True)
+x1,y1 = np.loadtxt('selectionpy.txt' , delimiter=',' , unpack=True)
+x2,y2 = np.loadtxt('selectionjava.txt' , delimiter=',' , unpack=True)
 
 
 plt.plot(x,y,color="blue",label="Selection Sort C++")

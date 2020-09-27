@@ -3,9 +3,9 @@ import numpy as np
 #import cv2
 from matplotlib import pyplot as plt
 
-x,y = np.loadtxt('countingCpp.txt' , delimiter=',' , unpack=True)
-x1,y1 = np.loadtxt('CountinPy.txt' , delimiter=',' , unpack=True)
-x2,y2 = np.loadtxt('countjava.txt' , delimiter=',' , unpack=True)
+x,y = np.loadtxt('countingcpp.txt' , delimiter=',' , unpack=True)
+x1,y1 = np.loadtxt('countingpy.txt' , delimiter=',' , unpack=True)
+x2,y2 = np.loadtxt('countingjava.txt' , delimiter=',' , unpack=True)
 
 
 plt.plot(x,y,color="blue",label="Counting Sort C++")

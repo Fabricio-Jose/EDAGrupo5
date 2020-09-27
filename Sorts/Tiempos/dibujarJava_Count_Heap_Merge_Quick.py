@@ -6,11 +6,11 @@ from matplotlib import pyplot as plt
 
 
 #x,y = np.loadtxt('bubblejava.txt' , delimiter=',' , unpack=True)
-x1,y1 = np.loadtxt('countjava.txt' , delimiter=',' , unpack=True)
-x2,y2 = np.loadtxt('heapjava.txt' , delimiter=',' , unpack=True)
+x1,y1 = np.loadtxt('countingjavaM.txt' , delimiter=',' , unpack=True)
+x2,y2 = np.loadtxt('heapjavaM.txt' , delimiter=',' , unpack=True)
 #x3,y3 = np.loadtxt('insertjava.txt' , delimiter=',' , unpack=True)
-x4,y4 = np.loadtxt('mergejava.txt' , delimiter=',' , unpack=True)
-x5,y5 = np.loadtxt('QuickJava.txt' , delimiter=',' , unpack=True)
+x4,y4 = np.loadtxt('mergejavaM.txt' , delimiter=',' , unpack=True)
+x5,y5 = np.loadtxt('quickjavaM.txt' , delimiter=',' , unpack=True)
 #x6,y6 = np.loadtxt('SelectionJava.txt' , delimiter=',' , unpack=True)
 
 
