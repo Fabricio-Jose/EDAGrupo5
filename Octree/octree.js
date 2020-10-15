@@ -54,7 +54,7 @@ class OcTree {
 		this.color = new THREE.Color(Math.random()*1, Math.random()*1, Math.random()*1);
 
 		this.geometry = new THREE.BoxGeometry(boundary.w*2, boundary.h*2, boundary.d*2);
-		this.material = new THREE.MeshBasicMaterial({color: 0x00ff00, opacity: 0.2, transparent: true});
+		this.material = new THREE.MeshBasicMaterial({color: 0x00ff00, opacity: 0.23, transparent: true});
 		this.material.color.set(this.color);
 		this.box = new THREE.Mesh(this.geometry, this.material);
 		//this.box.position.set(boundary.x, boundary.y, boundary.z);

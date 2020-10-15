@@ -7,9 +7,9 @@ renderer.shadowMap.enabled = true;
 //camera
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
-camera.position.x = -100;
-camera.position.y = -20;
-camera.position.z = -100;
+camera.position.x = 80;
+camera.position.y = 30;
+camera.position.z = 80;
 
 //plano
 const gridHelper = new THREE.GridHelper(1000, 40);
@@ -49,7 +49,7 @@ var animate = function() {
 	requestAnimationFrame(animate);
 	controls.update();
 	renderer.render(scene, camera);
-	
+
 };
 
 animate();
