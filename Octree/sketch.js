@@ -1,7 +1,8 @@
 var renderer = new THREE.WebGLRenderer({canvas: document.getElementById("canvas"), antialias: true});
 renderer.setPixelRatio(window.devicePixelRadio);
 renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
-// document.body.appendChild(renderer.domElement);
+renderer.setClearColor(0xd3d3d3); // it's a dark gray
+renderer.shadowMap.enabled = true;
 
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
 var controls = new THREE.OrbitControls(camera, renderer.domElement);

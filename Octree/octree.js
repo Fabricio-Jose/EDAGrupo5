@@ -4,7 +4,7 @@ class Point {
 		this.y = y;
 		this.z = z;
 		this.geometry = new THREE.SphereGeometry(2, 10, 10);
-		this.material = new THREE.MeshBasicMaterial();
+		this.material = new THREE.MeshPhongMaterial();
 		this.sphere = new THREE.Mesh(this.geometry, this.material);
 		this.sphere.position.set(this.x, this.y, this.z);
 		scene.add(this.sphere);
