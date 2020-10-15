@@ -4,21 +4,23 @@ renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
 renderer.setClearColor(0xd3d3d3); // it's a dark gray
 renderer.shadowMap.enabled = true;
 
+//camera
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
-
 camera.position.x = -100;
 camera.position.y = -20;
 camera.position.z = -100;
 
-
+//plano
 const gridHelper = new THREE.GridHelper(1000, 40);
-
 //var axesHelper = new THREE.AxesHelper(2.25);
+
 var scene = new THREE.Scene();
 //scene.add(axesHelper);
 scene.add(gridHelper);
 
+
+//luz
 var light = new THREE.DirectionalLight(0xffffff);
 light.position.set(50, 100, 25);
 scene.add(light);
@@ -47,6 +49,7 @@ var animate = function() {
 	requestAnimationFrame(animate);
 	controls.update();
 	renderer.render(scene, camera);
+	
 };
 
 animate();

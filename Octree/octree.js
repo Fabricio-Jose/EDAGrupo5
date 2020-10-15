@@ -7,7 +7,7 @@ class Point {
 		this.material = new THREE.MeshPhongMaterial();
 		this.sphere = new THREE.Mesh(this.geometry, this.material);
 		this.sphere.position.set(this.x, this.y, this.z);
-		scene.add(this.sphere);
+		
 	}
 }
 
@@ -62,6 +62,17 @@ class OcTree {
 		scene.add(this.box);
 	}
 
+	buscarPunto(point)
+	{
+		for (let p of this.points)
+		{
+			if(p.x===point.x&&p.y===point.y&&p.z===point.z){
+				return true;
+			}
+		}
+		return false;
+	}
+
 	subdivide() {
 		let x = this.boundary.x;
 		let y = this.boundary.y;
@@ -93,23 +104,30 @@ class OcTree {
 
 	insert(point) {
 		if (!this.boundary.contains(point)) {
-			return;
+			return false;
 		}
 		if (this.points.length < this.capacity) {
-			this.points.push(point);
-			point.material.color.set(this.color);
+			if(!this.buscarPunto(point))
+			{
+				this.points.push(point);
+				point.material.color.set(this.color);
+				scene.add(point.sphere);
+				return true;
+			}
+			return false
+			
 		}
 		else {
 			if (!this.divided) {
 				this.subdivide();
 			}
-			this.topRightFront.insert(point);
-			this.topLeftFront.insert(point);
-			this.bottomRightFront.insert(point);
-			this.bottomLeftFront.insert(point);
-			this.topRightBack.insert(point);
-			this.topLeftBack.insert(point);
-			this.bottomRightBack.insert(point);
+			return this.topRightFront.insert(point) ||
+			this.topLeftFront.insert(point) ||
+			this.bottomRightFront.insert(point) ||
+			this.bottomLeftFront.insert(point) ||
+			this.topRightBack.insert(point) ||
+			this.topLeftBack.insert(point) ||
+			this.bottomRightBack.insert(point) ||
 			this.bottomLeftBack.insert(point);
 		}
 	}
