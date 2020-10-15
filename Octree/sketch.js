@@ -27,15 +27,15 @@ var octree;
 var q;
 
 function createOctree(m, n) {
-	let box = new Box(m/2, m/2, m/2, m/2, m/2, m/2);
+	let box = new Box(0, 0, 0, m/2, m/2, m/2);
 	octree = new OcTree(box, n);
 }
 
 function createPoint(m, n) {
 	for (let i = 0; i < n; i++) {
-		let x = Math.random()*m;
-		let y = Math.random()*m;
-		let z = Math.random()*m;
+		let x = Math.random() * (m/2 + m/2) - m/2;
+		let y = Math.random() * (m/2 + m/2) - m/2;
+		let z = Math.random() * (m/2 + m/2) - m/2;
 		let point = new Point(x, y, z);
 		octree.insert(point);
 	}
