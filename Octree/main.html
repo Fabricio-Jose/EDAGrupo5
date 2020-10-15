@@ -14,6 +14,15 @@
 			display: inline-block;
 			text-align: center;
 		}
+
+		#buttton {
+            background-color: red;
+            border: 2px solid #4CAF50;
+            border: blue;
+            color: white;
+            text-align: center;
+            display: inline-block;
+            }
 		#canvas {
 			width: 85%;
 			height: 100%;
@@ -36,18 +45,18 @@
 
 		<label>Crear Octree</label>
 		<input type="text" id="size" placeholder="Tamaño" size="3">
-		<input type="text" id="n1" placeholder="n" size="1">
-		<button onclick="create()">Crear</button>
+		<input type="text" id="n1" placeholder="n" size="1"><br>
+		<button id="buttton" onclick="create()">Crear</button><br>
 
 		<label>Crear Puntos</label>
-		<input type="text" id="n2" placeholder="n" size="1">
-		<button onclick="nrand()">Aleatorio</button>
+		<input type="text" id="n2" placeholder="n" size="1"><br>
+		<button id="buttton" onclick="nrand()">Aleatorio</button><br>
 
 		<input type="text" id="X" placeholder="x" size="1">
 		<input type="text" id="Y" placeholder="y" size="1">
-		<input type="text" id="Z" placeholder="z" size="1">
+		<input type="text" id="Z" placeholder="z" size="1"><br>
 
-		<button onclick="insert()">Insertar</button>
+		<button id="buttton" onclick="insert()">Insertar</button><br>
 
 		<label>Buscar</label>
 		<input type="text" id="CX" placeholder="x" size="1">
@@ -58,12 +67,12 @@
 		<input type="text" id="CH" placeholder="h" size="1">
 		<input type="text" id="CD" placeholder="d" size="1">
 
-		<button onclick="query()">Query</button>
-		<button onclick="squery()">Show Query</button>
-		<button onclick="dquery()">Clean Query</button>
+		<button id="buttton" onclick="query()">Query</button><br>
+		<button id="buttton" onclick="squery()">Show Query</button><br>
+		<button id="buttton" onclick="dquery()">Clean Query</button><br>
 
-		<label>Eliminar Octree</label>
-		<button onclick="clean()">Eliminar</button>
+		<label>Eliminar Octree</label><br>
+		<button id="buttton" onclick="clean()">Eliminar</button>
 
 		<div id="found"></div>
 	</div>
@@ -141,8 +150,8 @@
 			scene.add(axesHelper);
 		}
 	</script>
-	<script src="../three.js"></script>
-	<script src="../OrbitControls.js"></script>
+	<script src="librerias/three.js"></script>
+	<script src="librerias/OrbitControls.js"></script>
 	<script src="octree.js"></script>
 	<script src="sketch.js"></script>
 </body>
