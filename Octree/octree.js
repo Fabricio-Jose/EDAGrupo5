@@ -35,12 +35,12 @@ class Box {
 	}
 
 	intersects(range) {
-		return !(range.x - range.w > this.x + this.w || 
-                range.x + range.w < this.x - this.w ||
-				range.y - range.h > this.y + this.h ||
-				range.y + range.h < this.y - this.h ||
-				range.z - range.d > this.z + this.d ||
-				range.z + range.d < this.z - this.d);
+		return !(parseInt(range.x,10) - parseInt(range.w,10) > parseInt(this.x,10) + parseInt(this.w,10) || 
+				parseInt(range.x,10) + parseInt(range.w,10) < parseInt(this.x,10) - parseInt(this.w,10) ||
+				parseInt(range.y,10) - parseInt(range.h,10) > parseInt(this.y,10) + parseInt(this.h,10) ||
+				parseInt(range.y,10) + parseInt(range.h,10) < parseInt(this.y,10) - parseInt(this.h,10) ||
+				parseInt(range.z,10) - parseInt(range.d,10) > parseInt(this.z,10) + parseInt(this.d,10) ||
+				parseInt(range.z,10) + parseInt(range.d,10) < parseInt(this.z,10) - parseInt(this.d,10));
 	}
 }
 
@@ -141,7 +141,9 @@ class OcTree {
 		query(range, found) {
 		if (this.boundary.intersects(range)) {
 			for (let p of this.points) {
+				
 				if (range.contains(p)) {
+					
 					p.material.color.set(new THREE.Color(255, 0, 0));
 					found.push(p);
 				}
