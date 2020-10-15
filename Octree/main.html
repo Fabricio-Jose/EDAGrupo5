@@ -16,16 +16,17 @@
 			font: 12px verdana;
 		}
 		#canvas {
-			width: 85%;
+			width: 82%;
 			height: 100%;
 		}
         #buttton {
-            background-color: red;
-            border: 2px solid #4CAF50;
+            background-color: #df4848;
+            border: 4px solid #4CAF50;
             border: blue;
             color: white;
             text-align: center;
             display: inline-block;
+            font: bold 15px Arial;
             }
 		#buttons {
 			float: left;
@@ -34,35 +35,43 @@
 			text-align: left;
 			border-bottom: 1px solid #ccc;
 		}
-		
+		#labels{
+		  font: oblique bold 120% cursive;
+		  color: #0c52c5;
+        font: bold 13px verdana;
+		}
 		h1 {
-			font: bold 25px verdana;
+			font: bold 40px Arial;
 			text-align: center;
+            color: #ad1111;
+			
 		}
 		h2 {
 			display: block;
-			font: bold 15px verdana;
+			font: bold 20px verdana;
+            color: green;
+			
 		}
 	</style>
 </head>
 
 <body>
-	<div id="buttons">
+	<div id="buttons" style="background-color:#62b079">
 		<h1>OCTREE</h1>
 
 		<h2>Crear Octree</h2>
-		<label>Tamaño 3D y límite de puntos:</label>
+		<label id="labels">Tamaño 3D y límite de puntos:</label>
 		<input type="text" id="size" placeholder="m" size="3">
 		<input type="text" id="n1" placeholder="n" size="1">
 		<button id="buttton" onclick="create()">Crear</button>
 
 		<h2>Crear Puntos</h2>
-		<label>Aleatoriamente:</label>
+		<label id="labels">Aleatoriamente:</label>
 		<br>
 		<input type="text" id="n2" placeholder="n" size="1">
 		<button id="buttton" onclick="nrand()">Insertar</button>
 		<br>
-		<label>Con coordenadas:</label>
+		<label id="labels">Con coordenadas:</label>
 		<br>
 		<input type="text" id="X" placeholder="x" size="1">
 		<input type="text" id="Y" placeholder="y" size="1">
@@ -71,7 +80,7 @@
 		<button id="buttton" onclick="insert()">Insertar</button>
 
 		<h2>Buscar</h2>
-		<label>Ingresar centro y dimensiones:</label>
+		<label id="labels">Ingresar centro y dimensiones:</label>
 		<br>
 		<input type="text" id="CX" placeholder="x" size="1">
 		<input type="text" id="CY" placeholder="y" size="1">
@@ -136,7 +145,6 @@
 			var ch = document.getElementById("CH").value;
 			var cd = document.getElementById("CD").value;
 			let geometry = new THREE.BoxGeometry(cw*2, ch*2, cd*2);
-			//var material = new THREE.MeshBasicMaterial({color: 0x00ff00, opacity: 0.2, transparent: false});
 			material = new THREE.MeshBasicMaterial({
 					color: 0x000000,
 					wireframe: true,
@@ -163,7 +171,7 @@
 
 		function clean() {
 			scene = new THREE.Scene();
-			scene.add(axesHelper);
+			scene.add(gridHelper);
 		}
 	</script>
 	<script src="librerias/three.js"></script>
