@@ -114,7 +114,7 @@ class OcTree {
 				scene.add(point.sphere);
 				return true;
 			}
-			return false
+			return false;
 			
 		}
 		else {
