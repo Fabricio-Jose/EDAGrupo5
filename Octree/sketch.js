@@ -11,9 +11,17 @@ camera.position.x = -100;
 camera.position.y = -20;
 camera.position.z = -100;
 
-var axesHelper = new THREE.AxesHelper(2.25);
+
+const gridHelper = new THREE.GridHelper(1000, 40);
+
+//var axesHelper = new THREE.AxesHelper(2.25);
 var scene = new THREE.Scene();
-scene.add(axesHelper);
+//scene.add(axesHelper);
+scene.add(gridHelper);
+
+var light = new THREE.DirectionalLight(0xffffff);
+light.position.set(50, 100, 25);
+scene.add(light);
 
 var octree;
 var q;
