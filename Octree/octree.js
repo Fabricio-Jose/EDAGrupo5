@@ -22,17 +22,18 @@ class Box {
 	}
 
 	contains(point) {
-		if (point.x <= this.x + this.w && 
-            point.y <= this.y + this.h && 
-            point.z <= this.z + this.d &&
-			point.x >= this.x - this.w &&
-			point.y >= this.y - this.h &&
-			point.z >= this.z - this.d) {
+		
+		if (point.x <= parseInt(this.x,10)+ this.w && 
+            point.y <= parseInt(this.y,10) + parseInt(this.h,10) && 
+            point.z <= parseInt(this.z,10) + parseInt(this.d,10) &&
+			point.x >= parseInt(this.x,10) - parseInt(this.w,10) &&
+			point.y >= parseInt(this.y,10) - parseInt(this.h,10) &&
+			point.z >= parseInt(this.z,10) - parseInt(this.d,10)) {
 			return 1;
 		}
 		return 0;
 	}
-
+	
 	intersects(range) {
 		return !(range.x - range.w > this.x + this.w || 
                 range.x + range.w < this.x - this.w ||
