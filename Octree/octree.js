@@ -23,7 +23,7 @@ class Box {
 
 	contains(point) {
 		
-		if (point.x <= parseInt(this.x,10)+ this.w && 
+		if (point.x <= parseInt(this.x,10) + parseInt(this.w,10) && 
             point.y <= parseInt(this.y,10) + parseInt(this.h,10) && 
             point.z <= parseInt(this.z,10) + parseInt(this.d,10) &&
 			point.x >= parseInt(this.x,10) - parseInt(this.w,10) &&
@@ -33,7 +33,7 @@ class Box {
 		}
 		return 0;
 	}
-	
+
 	intersects(range) {
 		return !(range.x - range.w > this.x + this.w || 
                 range.x + range.w < this.x - this.w ||
